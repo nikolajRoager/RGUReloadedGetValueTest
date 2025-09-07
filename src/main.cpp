@@ -76,6 +76,8 @@ int main() {
         std::cout<<"Boolean matrix multiplication"<<std::endl;
         if (getValueBooleanMatrixMultiplication(testMatrix16bitFull,testState)!=standardResult)
             std::cout<<"Test failed"<<std::endl;
+        else
+            std::cout<<"TEST SUCCEEDED"<<std::endl;
         const auto start = std::chrono::high_resolution_clock::now();
         for (int i = 0; i < repeats; i++) {
             volatile int32_t result = getValueBooleanMatrixMultiplication(testMatrix16bitFull,testState);
@@ -91,6 +93,8 @@ int main() {
         std::cout<<"Manually unrolled matrix multiplication"<<std::endl;
         if (getValueUnrolledMatrixMultiplication(testMatrix16bitFull,testState)!=standardResult)
             std::cout<<"Test failed"<<std::endl;
+        else
+            std::cout<<"TEST SUCCEEDED"<<std::endl;
         const auto start = std::chrono::high_resolution_clock::now();
         for (int i = 0; i < repeats; i++) {
             volatile int32_t result = getValueUnrolledMatrixMultiplication(testMatrix16bitFull,testState);
@@ -105,8 +109,9 @@ int main() {
         std::cout<<"AVX matrix multiplication"<<std::endl;
         if (getValueAVXMatrixMultiplication(testMatrix16bitFull,testState)!=standardResult)
             std::cout<<"Test failed"<<std::endl;
+        else
+            std::cout<<"TEST SUCCEEDED"<<std::endl;
 
-        /*
         const auto start = std::chrono::high_resolution_clock::now();
         for (int i = 0; i < repeats; i++) {
             volatile int32_t result = getValueAVXMatrixMultiplication(testMatrix16bitFull,testState);
@@ -114,7 +119,6 @@ int main() {
         const auto stop= std::chrono::high_resolution_clock::now();
         const auto duration = stop-start;
         std::cout<<"Took on average "<<(duration_cast<std::chrono::nanoseconds>(duration)).count()/(repeats)<<" ns"<<std::endl;
-*/
     }
 
     return 0;
